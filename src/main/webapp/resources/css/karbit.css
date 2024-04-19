@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'iransans';
+    src: url("/resources/fonts/iransans.ttf") format("truetype")
+}
+
+* {
+    font-family: 'iransans', sans-serif;
+}
+
+.ui-growl {
+    top: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+}
+
+.ui-growl-item-container {
+    box-shadow: 0 1px 10px rgb(0 0 0 / 80%);
+    opacity: 1;
+}
+
+.ui-growl-message {
+    color: white !important;
+}
+
+.ui-growl-error {
+    background-color: #bb5647 !important;
+}
+
+.ui-growl-image {
+    display: none !important;
+}
+
+.ui-shadow {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ui-autocomplete-panel {
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid #d2d2d2;
+}
+
+.ui-autocomplete-panel .ui-autocomplete-table th, .ui-autocomplete-panel .ui-autocomplete-table td {
+    border: inherit;
+}
+
+.fc-gray {
+    color: #a9a9a9;
+}
+
+.fc-gray-dark {
+    color: #797979;
+}

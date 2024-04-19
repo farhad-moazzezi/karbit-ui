@@ -1,0 +1,115 @@
+<pretty-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+               xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+    <!--index-->
+	<url-mapping id="index">
+		<pattern value="/"/>
+		<view-id value="/index.xhtml"/>
+	</url-mapping>
+    <url-mapping id="index">
+        <pattern value="/index"/>
+        <view-id value="/index.xhtml"/>
+    </url-mapping>
+    <url-mapping id="index">
+        <pattern value="/index/"/>
+        <view-id value="/index.xhtml"/>
+    </url-mapping>
+    <url-mapping id="index">
+        <pattern value="/index/#{description}"/>
+        <view-id value="/index.xhtml"/>
+    </url-mapping>
+    <url-mapping id="index">
+        <pattern value="/index/#{description}/"/>
+        <view-id value="/index.xhtml"/>
+    </url-mapping>
+
+    <!--signin-->
+    <url-mapping id="signin">
+        <pattern value="/signin"/>
+        <view-id value="/signin.xhtml"/>
+    </url-mapping>
+    <url-mapping id="signin">
+        <pattern value="/signin/"/>
+        <view-id value="/signin.xhtml"/>
+    </url-mapping>
+    <url-mapping id="signin">
+        <pattern value="/signin/#{description}"/>
+        <view-id value="/signin.xhtml"/>
+    </url-mapping>
+    <url-mapping id="signin">
+        <pattern value="/signin/#{description}/"/>
+        <view-id value="/signin.xhtml"/>
+    </url-mapping>
+
+    <!--signup-->
+    <url-mapping id="signup">
+        <pattern value="/signup"/>
+        <view-id value="/signup.xhtml"/>
+    </url-mapping>
+    <url-mapping id="signup">
+        <pattern value="/signup/"/>
+        <view-id value="/signup.xhtml"/>
+    </url-mapping>
+    <url-mapping id="signup">
+        <pattern value="/signup/#{invitationId}"/>
+        <view-id value="/signup.xhtml"/>
+    </url-mapping>
+    <url-mapping id="signup">
+        <pattern value="/signup/#{invitationId}/"/>
+        <view-id value="/signup.xhtml"/>
+    </url-mapping>
+
+    <!--articles-->
+    <url-mapping id="articles">
+        <pattern value="/articles"/>
+        <view-id value="/articles.xhtml"/>
+    </url-mapping>
+    <url-mapping id="articles">
+        <pattern value="/articles/"/>
+        <view-id value="/articles.xhtml"/>
+    </url-mapping>
+    <url-mapping id="articles">
+        <pattern value="/articles/#{description}"/>
+        <view-id value="/articles.xhtml"/>
+    </url-mapping>
+    <url-mapping id="articles">
+        <pattern value="/articles/#{description}/"/>
+        <view-id value="/articles.xhtml"/>
+    </url-mapping>
+
+	<!--article-->
+	<url-mapping id="read-article">
+		<pattern value="/read/#{articleLoader.articleId}"/>
+		<view-id value="/read.xhtml"/>
+		<action>#{articleLoader.loadArticle}</action>
+	</url-mapping>
+	<url-mapping id="read-article">
+		<pattern value="/read/#{articleLoader.articleId}/"/>
+		<view-id value="/read.xhtml"/>
+		<action>#{articleLoader.loadArticle}</action>
+	</url-mapping>
+	<url-mapping id="read-article">
+		<pattern value="/read/#{articleLoader.articleId}/#{description}"/>
+		<view-id value="/read.xhtml"/>
+		<action>#{articleLoader.loadArticle}</action>
+	</url-mapping>
+	<url-mapping id="read-article">
+		<pattern value="/read/#{articleLoader.articleId}/#{description}/"/>
+		<view-id value="/read.xhtml"/>
+		<action>#{articleLoader.loadArticle}</action>
+	</url-mapping>
+
+
+	<!--article-->
+	<url-mapping id="write-article">
+		<pattern value="/write"/>
+		<view-id value="/write.xhtml"/>
+	</url-mapping>
+	<url-mapping id="write-article">
+		<pattern value="/write/"/>
+		<view-id value="/write.xhtml"/>
+	</url-mapping>
+
+</pretty-config>

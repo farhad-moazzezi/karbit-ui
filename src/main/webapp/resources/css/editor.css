@@ -1,0 +1,75 @@
+.ql-syntax {
+    text-align: left;
+    direction: ltr;
+}
+
+.ql-editor {
+    text-align: unset !important;
+}
+
+.ql-snow .ql-editor img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+}
+
+.ql-container {
+    font-size: unset !important;
+}
+
+.ql-container.ql-snow {
+    border: none;
+}
+
+.ql-toolbar.ql-snow {
+    border-radius: .25rem !important;
+    border: none;
+    background-color: #f9f9f9;
+}
+
+.ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+    margin-top: 8px;
+    height: 30px;
+    width: 35px;
+}
+
+.ui-autocomplete-multiple-container {
+    width: inherit !important;
+    direction: rtl;
+}
+
+.ui-autocomplete-token {
+    float: right;
+}
+
+.ui-autocomplete-token-label {
+    display: block;
+    padding: 0;
+}
+
+.ui-autocomplete-input-token {
+    float: unset;
+}
+
+.ui-autocomplete-input-token input {
+    width: inherit;
+}
+
+@media (max-device-width: 991.98px) {
+
+    .ui-texteditor {
+        height: calc(100vh - 9.5rem);
+    }
+
+    .ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+        height: 60px;
+        width: 60px;
+    }
+}
+
+@media (min-device-width: 991.98px) {
+    .ui-texteditor {
+        height: calc(100vh - 7.15rem);
+    }
+}

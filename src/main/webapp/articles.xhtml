@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <link rel="stylesheet" href="/resources/css/bootstrap.rtl.min.css"/>
+    <link rel="stylesheet" href="/resources/css/karbit.css"/>
+    <h:outputScript type="text/javascript" src="/resources/js/bootstrap.min.js"/>
+</h:head>
+
+<h:body dir="RTL">
+    <h:form>
+        <ui:include src="component/menu.xhtml"/>
+        <div class="container">
+            <div class="row">
+                <ui:repeat value="#{articleSearcher.articleSummary}" var="article">
+                    <div class="col-12 pt-3 border-bottom text-decoration-none">
+                        <p:link styleClass="fs-2 text-decoration-none" href="/read/#{article.articleId}">
+                            #{article.title}
+                        </p:link>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="font-weight-bold fc-gray">برچسب‌ها:</span>
+                                <ui:repeat value="#{article.tags}" var="tag">
+                                    <span class="text-decoration-none fc-gray border rounded-pill p-1 px-2">#{tag.caption}</span>
+                                </ui:repeat>
+                            </div>
+                            <div>
+                                <div class="text-center fc-gray">#{article.author.nickname}</div>
+                                <div class="text-center fc-gray">#{article.lastModifyDate}</div>
+                            </div>
+                        </div>
+                    </div>
+                </ui:repeat>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+</html>

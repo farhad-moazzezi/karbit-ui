@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <link rel="stylesheet" href="/resources/css/karbit.css"/>
+    <link rel="stylesheet" href="/resources/css/bootstrap.rtl.min.css"/>
+    <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+</h:head>
+
+<h:body dir="RTL">
+    <h:form>
+        <ui:include src="component/header.xhtml"/>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 justify-content-center pt-5 mt-5">
+                    <div class="d-flex justify-content-center p-2">
+                        <h1 class="text-center fw-bold">احراز هویت</h1>
+                    </div>
+                    <div class="d-flex justify-content-center p-2 input-group-lg">
+                        <p:inputText id="otp" value="#{activationBackBean.otp}"
+                                     placeholder="کد یکبار مصرف"
+                                     maxlength="11" styleClass="form-control text-center fs-3 border-1"
+                                     dir="LTR"/>
+                        <div class="input-group-append">
+                            <p:commandLink styleClass="btn btn-outline-secondary"
+                                           actionListener="#{activationBackBean.activate}" value="ارسال مجدد"
+                                           process="@this otp"
+                                           update="otp"/>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center p-2">
+                        <p:commandLink styleClass="btn btn-dark m-1 px-4"
+                                       actionListener="#{activationBackBean.activate}" value="تایید و بررسی"
+                                       process="@this otp"
+                                       update="otp"/>
+
+                        <p:commandLink styleClass="btn btn-light border-dark m-1 px-4 text-decoration-none"
+                                       actionListener="#{activationBackBean.signinWithAnotherNumber}" value="تغییر شماره موبایل"
+                                       process="@this otp"
+                                       update="otp"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+</html>

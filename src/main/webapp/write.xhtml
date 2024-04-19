@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <link rel="stylesheet" href="/resources/css/bootstrap.rtl.min.css"/>
+    <link rel="stylesheet" href="/resources/css/karbit.css"/>
+    <link rel="stylesheet" href="/resources/css/editor.css"/>
+    <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
+</h:head>
+
+<h:body dir="RTL">
+    <h:form>
+        <ui:include src="component/header.xhtml"/>
+        <div class="container">
+            <div class="row">
+                <p:inputText id="txtTitle" value="#{articleManager.title}" styleClass="form-control fs-3 border-0 mt-4"
+                             placeholder="عنوان مقاله رو بنویسید..."/>
+                <p:autoComplete id="lstTags" multiple="true" value="#{articleManager.selectedTags}"
+                                completeMethod="#{articleManager.findCorrespondingTags}"
+                                var="tag" itemLabel="#{tag.caption}" itemValue="#{tag.caption}"
+                                styleClass="fs-3"
+                                forceSelection="true"
+                                itemStyleClass="border border-1 px-3 py-1 mt-2 rounded-pill fs-6" unique="true"
+                                placeholder="برچسب...">
+                    <p:column>
+                        <h:outputText styleClass="fs-5 my-2" value="#{tag.caption}"/>
+                    </p:column>
+                </p:autoComplete>
+
+                <div class="col-12">
+                    <p:textEditor id="txtContent" widgetVar="editor2" value="#{articleManager.content}"
+                                  placeholder="دانش خودتون رو به با نوشتن یه مقاله دقیق و کامل به اشتراک بذارید..."
+                                  required="true" styleClass="mt-3" requiredMessage="متن مقاله خالیه...">
+                        <f:facet name="toolbar">
+                            <div class="d-flex justify-content-between">
+                                 <span class="ql-formats">
+                                    <button class="ql-image"/>
+                                    <button class="ql-code-block"/>
+                                    <button class="ql-blockquote"/>
+                                    <button class="ql-header" value="2"/>
+                                    <button class="ql-header" value="1"/>
+                                    <button class="ql-underline"/>
+                                    <button class="ql-italic"/>
+                                    <button class="ql-bold"/>
+                                </span>
+                                <span>
+                                     <p:commandLink styleClass="btn btn-outline-dark m-1"
+                                                    value="پیش‌نمایش" actionListener="#{articleManager.showPreview}"/>
+                                </span>
+                            </div>
+                        </f:facet>
+                    </p:textEditor>
+                </div>
+            </div>
+        </div>
+
+        <p:idleMonitor timeout="5000">
+            <p:ajax event="idle" listener="#{articleManager.autoDraft}" process="@form"/>
+        </p:idleMonitor>
+    </h:form>
+</h:body>
+</html>
