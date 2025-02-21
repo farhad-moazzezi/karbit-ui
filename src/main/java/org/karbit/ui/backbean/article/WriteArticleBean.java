@@ -8,7 +8,8 @@ import javax.faces.application.FacesMessage;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.karbit.postmng.common.dto.request.CreateArticleReq;
+import org.karbit.article.common.dto.request.DraftArticleReq;
+import org.karbit.article.common.dto.response.CreateArticleResp;
 import org.karbit.tagmng.common.dto.common.TagInfo;
 import org.karbit.tagmng.common.dto.request.SearchTagReq;
 import org.karbit.tagmng.common.dto.response.FoundTagResp;
@@ -25,7 +26,9 @@ import org.springframework.stereotype.Component;
 @Component
 @ViewScoped
 @RequiredArgsConstructor
-public class ArticleManager {
+public class WriteArticleBean {
+	private String articleId;
+
 	private String title;
 
 	private String content;
@@ -49,13 +52,19 @@ public class ArticleManager {
 
 	public void autoDraft() {
 		try {
-			CreateArticleReq createArticleReq = new CreateArticleReq();
-			createArticleReq.setContent(getContent());
-			createArticleReq.setTitle(getTitle());
-			createArticleReq.setTagLabel(getSelectedTags().stream().map(String::trim).collect(Collectors.toSet()));
-			articleService.createArticle(createArticleReq);
+			CreateArticleResp draftArticle = upsertDraftArticle();
+			setArticleId(draftArticle.getArticleId());
 		} catch (BaseClientException exception) {
 			GrowlHandler.showMessage(exception.getTitle(), exception.getDetail(), FacesMessage.SEVERITY_ERROR);
 		}
+	}
+
+	private CreateArticleResp upsertDraftArticle() {
+		DraftArticleReq req = new DraftArticleReq();
+		req.setContent(getContent());
+		req.setTitle(getTitle());
+		req.setArticleId(getArticleId());
+		req.setTagLabels(getSelectedTags().stream().map(String::trim).collect(Collectors.toSet()));
+		return articleService.createDraftArticle(req);
 	}
 }

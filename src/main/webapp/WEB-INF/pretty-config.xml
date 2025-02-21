@@ -81,24 +81,24 @@
 
 	<!--article-->
 	<url-mapping id="read-article">
-		<pattern value="/read/#{articleLoader.articleId}"/>
+		<pattern value="/read/#{readArticleBean.articleId}"/>
 		<view-id value="/read.xhtml"/>
-		<action>#{articleLoader.loadArticle}</action>
+		<action>#{readArticleBean.loadArticle}</action>
 	</url-mapping>
 	<url-mapping id="read-article">
-		<pattern value="/read/#{articleLoader.articleId}/"/>
+		<pattern value="/read/#{readArticleBean.articleId}/"/>
 		<view-id value="/read.xhtml"/>
-		<action>#{articleLoader.loadArticle}</action>
+		<action>#{readArticleBean.loadArticle}</action>
 	</url-mapping>
 	<url-mapping id="read-article">
-		<pattern value="/read/#{articleLoader.articleId}/#{description}"/>
+		<pattern value="/read/#{readArticleBean.articleId}/#{description}"/>
 		<view-id value="/read.xhtml"/>
-		<action>#{articleLoader.loadArticle}</action>
+		<action>#{readArticleBean.loadArticle}</action>
 	</url-mapping>
 	<url-mapping id="read-article">
-		<pattern value="/read/#{articleLoader.articleId}/#{description}/"/>
+		<pattern value="/read/#{readArticleBean.articleId}/#{description}/"/>
 		<view-id value="/read.xhtml"/>
-		<action>#{articleLoader.loadArticle}</action>
+		<action>#{readArticleBean.loadArticle}</action>
 	</url-mapping>
 
 

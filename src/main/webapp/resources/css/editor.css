@@ -5,6 +5,7 @@
 
 .ql-editor {
     text-align: unset !important;
+    overflow-y: unset !important;
 }
 
 .ql-snow .ql-editor img {
@@ -12,6 +13,15 @@
     margin-left: auto;
     margin-right: auto;
     padding: 15px;
+}
+
+.ql-snow .ql-editor h2 {
+    margin-top: 1em;
+    margin-bottom: .3em;
+}
+
+.ql-editor p:last-child {
+    padding-bottom: 1em;
 }
 
 .ql-container {

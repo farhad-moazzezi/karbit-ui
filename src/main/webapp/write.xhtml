@@ -8,6 +8,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/bootstrap.rtl.min.css"/>
     <link rel="stylesheet" href="/resources/css/karbit.css"/>
     <link rel="stylesheet" href="/resources/css/editor.css"/>
@@ -19,10 +20,10 @@
         <ui:include src="component/header.xhtml"/>
         <div class="container">
             <div class="row">
-                <p:inputText id="txtTitle" value="#{articleManager.title}" styleClass="form-control fs-3 border-0 mt-4"
+                <p:inputText id="txtTitle" value="#{writeArticleBean.title}" styleClass="form-control fs-3 border-0 mt-4"
                              placeholder="عنوان مقاله رو بنویسید..."/>
-                <p:autoComplete id="lstTags" multiple="true" value="#{articleManager.selectedTags}"
-                                completeMethod="#{articleManager.findCorrespondingTags}"
+                <p:autoComplete id="lstTags" multiple="true" value="#{writeArticleBean.selectedTags}"
+                                completeMethod="#{writeArticleBean.findCorrespondingTags}"
                                 var="tag" itemLabel="#{tag.caption}" itemValue="#{tag.caption}"
                                 styleClass="fs-3"
                                 forceSelection="true"
@@ -34,9 +35,10 @@
                 </p:autoComplete>
 
                 <div class="col-12">
-                    <p:textEditor id="txtContent" widgetVar="editor2" value="#{articleManager.content}"
+                    <p:textEditor id="txtContent" widgetVar="editor2" value="#{writeArticleBean.content}"
+                                  secure="false"
                                   placeholder="دانش خودتون رو به با نوشتن یه مقاله دقیق و کامل به اشتراک بذارید..."
-                                  required="true" styleClass="mt-3" requiredMessage="متن مقاله خالیه...">
+                                  styleClass="mt-3" allowBlocks="true">
                         <f:facet name="toolbar">
                             <div class="d-flex justify-content-between">
                                  <span class="ql-formats">
@@ -44,14 +46,13 @@
                                     <button class="ql-code-block"/>
                                     <button class="ql-blockquote"/>
                                     <button class="ql-header" value="2"/>
-                                    <button class="ql-header" value="1"/>
                                     <button class="ql-underline"/>
                                     <button class="ql-italic"/>
                                     <button class="ql-bold"/>
                                 </span>
                                 <span>
                                      <p:commandLink styleClass="btn btn-outline-dark m-1"
-                                                    value="پیش‌نمایش" actionListener="#{articleManager.showPreview}"/>
+                                                    value="پیش‌نمایش" actionListener="#{writeArticleBean.showPreview}"/>
                                 </span>
                             </div>
                         </f:facet>
@@ -61,7 +62,7 @@
         </div>
 
         <p:idleMonitor timeout="5000">
-            <p:ajax event="idle" listener="#{articleManager.autoDraft}" process="@form"/>
+            <p:ajax event="idle" listener="#{writeArticleBean.autoDraft}" process="@form"/>
         </p:idleMonitor>
     </h:form>
 </h:body>

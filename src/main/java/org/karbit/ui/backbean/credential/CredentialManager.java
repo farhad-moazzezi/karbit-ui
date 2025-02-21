@@ -50,8 +50,7 @@ public class CredentialManager {
 		final Cookie credentialCookie = FacesContextManager.getCookie(Constant.CREDENTIAL_TOKEN);
 		if (Objects.isNull(credentialCookie) && isRequestUnprotectedPage()) {
 			return;
-		}
-		try {
+		} try {
 			AuthResponse authenticate = userManager.authenticate(credentialCookie.getValue(), Agent.WEB);
 			switch (authenticate.getStatus()) {
 				case "ACTIVE" -> handleActiveUser(authenticate);
@@ -74,8 +73,7 @@ public class CredentialManager {
 	}
 
 	private void handleNotActiveUsers() {
-		FacesContextManager.removeCookie(Constant.CREDENTIAL_TOKEN);
-		FacesContextManager.redirect(Page.SIGNIN);
+		FacesContextManager.removeCookie(Constant.CREDENTIAL_TOKEN); FacesContextManager.redirect(Page.SIGNIN);
 	}
 
 	private boolean isRequestUnprotectedPage() {
@@ -83,10 +81,10 @@ public class CredentialManager {
 	}
 
 	public void signin() {
-		log.info("going to login by cell number -> cell number: {}", cellNumber);
-		try {
+		log.info("going to login by cell number -> cell number: {}", cellNumber); try {
 			LoginResp loginResponse = userManager.login(new PhoneNumberBaseLoginReq(getCellNumber()));
 			FacesContextManager.setCookie(Constant.CREDENTIAL_TOKEN, loginResponse.getToken());
+			FacesContextManager.setCookie(Constant.USER_ID, loginResponse.getUserId());
 			FacesContextManager.setCookie(Constant.USER_STATUS, "READY_TO_ACTIVATION");
 			FacesContextManager.redirect(Page.USER_ACTIVATION);
 		} catch (BaseClientException exception) {
@@ -95,12 +93,9 @@ public class CredentialManager {
 	}
 
 	public void signup() {
-		log.info("going to login by cell number -> cell number: {}", cellNumber);
-		try {
-			PhoneNumberBaseSignupReq signupReq = new PhoneNumberBaseSignupReq();
-			signupReq.setPhoneNumber(cellNumber);
-			signupReq.setNickname(nickname);
-			SignupResp signupResp = userManager.signup(signupReq);
+		log.info("going to login by cell number -> cell number: {}", cellNumber); try {
+			PhoneNumberBaseSignupReq signupReq = new PhoneNumberBaseSignupReq(); signupReq.setPhoneNumber(cellNumber);
+			signupReq.setNickname(nickname); SignupResp signupResp = userManager.signup(signupReq);
 			FacesContextManager.setCookie(Constant.CREDENTIAL_TOKEN, signupResp.getToken());
 			FacesContextManager.setCookie(Constant.USER_STATUS, "READY_TO_ACTIVATION");
 			FacesContextManager.redirect(Page.USER_ACTIVATION);

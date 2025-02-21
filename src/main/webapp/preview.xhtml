@@ -8,6 +8,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/bootstrap.rtl.min.css"/>
     <link rel="stylesheet" href="/resources/css/karbit.css"/>
     <link rel="stylesheet" href="resources/css/editor.css"/>
@@ -19,7 +20,7 @@
         <ui:include src="component/header.xhtml"/>
         <div class="container-fluid ">
             <div class="row">
-                #{articleManager.content}
+                #{writeArticleBean.content}
             </div>
         </div>
     </h:form>

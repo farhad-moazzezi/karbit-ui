@@ -5,8 +5,8 @@ import java.util.List;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.karbit.postmng.common.dto.common.ArticleSummaryDto;
-import org.karbit.postmng.common.dto.response.ArticleSummaryResp;
+import org.karbit.article.common.dto.common.ArticleSummaryDto;
+import org.karbit.article.common.dto.response.ArticleSummaryResp;
 import org.karbit.ui.client.article.ArticleManagerService;
 import org.karbit.ui.config.scope.ViewScoped;
 

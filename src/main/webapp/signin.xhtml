@@ -7,8 +7,10 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-    <link rel="stylesheet" href="/resources/css/karbit.css"/>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/resources/css/bootstrap.rtl.min.css"/>
     <link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="resources/css/bootstrap.rtl.min.css"/>
     <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 </h:head>
 
@@ -28,7 +30,7 @@
                     <div class="d-flex justify-content-center p-2">
                         <p:inputText id="cellnumber" value="#{credentialManager.cellNumber}"
                                      placeholder="شماره موبایل"
-                                     maxlength="11" styleClass="text-center fs-3 border-1 rounded-3" dir="LTR"/>
+                                     maxlength="11" styleClass="text-center fs-3 border lborder-1 rounded-3" dir="LTR"/>
                     </div>
                     <div class="d-flex justify-content-center p-2">
                         <p:commandLink styleClass="btn btn-dark m-1"

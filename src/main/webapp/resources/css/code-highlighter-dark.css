@@ -1,0 +1,30 @@
+.ql-syntax {
+    padding: .5em 1em .5em 1em;
+    background-color: #1e1f22;
+    color: #000000;
+    border-radius: 5px;
+}
+
+.hljs {
+    color: #dedede;
+}
+
+.hljs-meta {
+    color: #b3ab0f;
+}
+
+.hljs-string {
+    color: #5eae6c;
+}
+
+.hljs-title.function_ {
+    color: #3e95d2;
+}
+
+.hljs-keyword {
+    color: #dc9770;
+}
+
+.hljs-type {
+    color: #dedede;
+}

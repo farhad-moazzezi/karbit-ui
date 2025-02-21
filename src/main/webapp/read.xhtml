@@ -7,9 +7,13 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/bootstrap.rtl.min.css"/>
     <link rel="stylesheet" href="/resources/css/karbit.css"/>
-    <h:outputScript type="text/javascript" src="/resources/js/bootstrap.min.js"/>
+    <link rel="stylesheet" href="/resources/css/highlight.min.css"/>
+    <link rel="stylesheet" href="/resources/css/code-highlighter-light.css"/>
+    <script type="text/javascript" src="/resources/js/bootstrap.min.js"/>
+    <script type="text/javascript" src="/resources/js/highlight.min.js"/>
 </h:head>
 
 <h:body dir="RTL">
@@ -17,10 +21,57 @@
         <ui:include src="component/menu.xhtml"/>
         <div class="container">
             <div class="row">
-                <h1>#{articleLoader.articleDetail.title}</h1>
-                <h:outputText value = "#{articleLoader.articleDetail.content}" escape="false"/>
+                <h1 class="pt-5">#{readArticleBean.articleDetail.title}</h1>
+                <div class="border-0 py-2 border-bottom fc-gray-dark">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <a href="#"
+                               class="text-decoration-none">#{readArticleBean.articleDetail.author.nickname}</a>
+                            <span>#{readArticleBean.articleDetail.createDate}</span>
+                        </div>
+                        <div class="border-top my-3 py-3">
+                            <p:commandLink actionListener="#{readArticleBean.like}" styleClass="fc-gray-dark"
+                                           rendered="#{menuBackBean.userStatus == 'ACTIVE'}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                     viewBox="0 0 16 16">
+                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+                                </svg>
+                            </p:commandLink>
+                            <p:commandLink actionListener="#{readArticleBean.unlike}"
+                                           rendered="#{menuBackBean.userStatus == 'ACTIVE'}" styleClass="fc-gray-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                     viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                                </svg>
+                            </p:commandLink>
+
+                            <p:commandLink actionListener="#{readArticleBean.mark}" styleClass="fc-gray-dark"
+                                           rendered="#{menuBackBean.userStatus == 'ACTIVE'}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                     class="bi bi-bookmark" viewBox="0 0 16 16">
+                                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+                                </svg>
+                            </p:commandLink>
+                            <p:commandLink actionListener="#{readArticleBean.unmark}"
+                                           rendered="#{menuBackBean.userStatus == 'ACTIVE'}" styleClass="fc-gray-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                     class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+                                    <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
+                                </svg>
+                            </p:commandLink>
+                        </div>
+                    </div>
+                </div>
+                <h:outputText styleClass="pt-4" value="#{readArticleBean.articleDetail.content}"
+                              escape="false"/>
             </div>
         </div>
     </h:form>
+    <script type="application/javascript">
+        document.querySelectorAll('pre.ql-syntax').forEach(el => {
+            hljs.highlightElement(el);
+        });
+    </script>
 </h:body>
 </html>

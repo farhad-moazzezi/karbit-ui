@@ -7,8 +7,10 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/bootstrap.rtl.min.css"/>
     <link rel="stylesheet" href="/resources/css/karbit.css"/>
+    <link rel="stylesheet" href="/resources/css/articles.css"/>
     <h:outputScript type="text/javascript" src="/resources/js/bootstrap.min.js"/>
 </h:head>
 
@@ -18,15 +20,18 @@
         <div class="container">
             <div class="row">
                 <ui:repeat value="#{articleSearcher.articleSummary}" var="article">
-                    <div class="col-12 pt-3 border-bottom text-decoration-none">
-                        <p:link styleClass="fs-2 text-decoration-none" href="/read/#{article.articleId}">
+                    <div class="col-12 pt-4 pb-3 border-bottom text-decoration-none">
+                        <p:link styleClass="text-decoration-none article-h" href="/read/#{article.articleId}">
                             #{article.title}
                         </p:link>
+                        <div class="pt-3 article-s">
+                            <h:outputText escape="false" value="#{article.summary}"/>
+                        </div>
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <span class="font-weight-bold fc-gray">برچسب‌ها:</span>
                                 <ui:repeat value="#{article.tags}" var="tag">
-                                    <span class="text-decoration-none fc-gray border rounded-pill p-1 px-2">#{tag.caption}</span>
+                                    <span class="text-decoration-none fc-gray border rounded-pill p-1 px-2 article-tg">#{tag.caption}</span>
                                 </ui:repeat>
                             </div>
                             <div>
